@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       h1{
+        color: red;
+        font-size: 150px;
+        text-decoration: overline !important;
+       }
+       .hello{
+        color:green !important;
+        font-size: 140px;
+        text-decoration:line-through;
+       }
+       .world{
+        color:cyan !important;
+        font-size: 130px;
+        text-decoration:line-through;
+       }
+       #world{
+        color:blue;
+        font-size: 120px;
+        text-decoration:line-through;
+       }
+    </style>
+</head>
+<body>
+  <!-- <h1  class="hello" id="world" style="text-decoration: underline;">
+    Hello word
+  </h1> -->
+  <script>
+    var s = new Promise((success, fail) => {
+setTimeout(() => {
+console.log(1); 
+success();
+ }, 2000)
+});
+
+console.log(2)
+
+var p2 = new Promise((success, fail) => {
+setTimeout(() => {
+ console.log(3);
+ success();
+}, 1000)
+});
+var p3 = Promise.all([s, p2]).then(() => new Promise((success, fail) => {
+     setTimeout(() => {
+    console.log(4)
+    success();
+     }, 3000);
+    }));
+p3.then(() => console.log(5));
+  </script>
+</body>
+</html>
